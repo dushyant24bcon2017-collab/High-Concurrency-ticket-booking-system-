@@ -1,6 +1,8 @@
 import express from "express"
 import type { Application, Request, Response } from "express";
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { apicheck } from "./API-Key-Middleware/security";
+import { rateLimiter } from "./Rate-Limiter/redis-bucket";
 const app : Application = express()
 const port = 3000
 
@@ -23,5 +25,5 @@ export const proxyMiddleware = createProxyMiddleware<Request, Response>({
 //     },
 // }
 });
-app.use( proxyMiddleware);
+app.use( proxyMiddleware,apicheck,rateLimiter);
 app.listen(port,()=>console.log("server is rinning on port 3000"))

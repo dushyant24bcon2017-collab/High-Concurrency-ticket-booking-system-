@@ -3,7 +3,7 @@ import { Request , Response,NextFunction, json} from "express";
 //CREAITNG INSTANCE
 const redis =  new Redis()
 
-const apicheck = async(req:Request,res:Response,next:NextFunction)=>{
+export const apicheck = async(req:Request,res:Response,next:NextFunction)=>{
    try{ //RETRIVEING API KEY
     const apiKey = req.headers['x-api-key']
     //CHECKING IF API KEY IS PRESNT OR NOT AND CHEKING ITS TYPE
