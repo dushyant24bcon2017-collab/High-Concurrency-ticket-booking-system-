@@ -25,5 +25,5 @@ export const proxyMiddleware = createProxyMiddleware<Request, Response>({
 //     },
 // }
 });
-app.use( proxyMiddleware,apicheck,rateLimiter);
+app.use(apicheck,rateLimiter,proxyMiddleware);
 app.listen(port,()=>console.log("server is rinning on port 3000"))
